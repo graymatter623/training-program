@@ -5,33 +5,37 @@
 		<script src = "js/validate.js" type = "text/javascript"></script>
 	</head>
 	<body>
-		<h2>Billing Address</h2>
+		
 		<div class = "container">
-			<form name = "checkoutform" action = "#">
+			<h2>Billing Address</h2>
+			<form name = "checkoutform" action = "#" onsubmit = "return checkForAll()">
  				<!--  First Name-->
  				<div class = "div_01">
-					<label for = "fname" id = "fname">First Name</label>
-					<label for = "lname" id = "lname">Last Name</label>
-					<br>
-					<input type = "text" name = "fname" id = "fname" onfocusout = "validate(this)">
-					<p id = "fname" style = "display:none;">Valid First Name is required <br></p>
-
-					<!--  Last Name -->
-
+						<label for = "fname" id = "fname">First Name</label><br>
+						<input type = "text" name = "fname" id = "fname" onfocusout = "validate(this)"><br>
+						<p id = "fname" style = "display:none;">Valid First Name is required</p>
 					
-					<input type = "text" name = "lname" id = "lname" onfocusout = "validate(this)" ><br>
-					<p id = "lname" style = "display:none;">Valid Last Name is required <br> </p>					
+						
+						<label for = "lname" id = "lname">Last Name</label>
+						<br>
+						<input type = "text" name = "lname" id = "lname" onfocusout = "validate(this)" >
+						
+						<p id = "lname" style = "display:none;">Valid Last Name is required  </p>
+						
+
 				</div><br>
 
 				<!--  User Name -->
 				<div class = "div_02">
+
 					<label for = "username">Username</label><br>
 					<input type = "text" name  = "username" placeholder = "Username" id = "username" onfocusout = "validate(this)"><br>
 					<p id = "username" style = "display:none;">Username is required <br></p>
 					<!--  Email -->
 					<label for = "email" name = "email">Email</label>
 					<label for = "optional" id = "optional" id = "optional">(Optional)</label><br>
-					<input type = "email" name = "email" id = "email" placeholder = "you@example.com"><br>
+					<input type = "text" name = "email" id = "email" placeholder = "you@example.com" onfocusout = "validate(this)"><br>
+					<p id = "email" style = "display:none;">Please Enter valid Email</p>
 					<!--  Address -->
 					<label for = "address" name = "address">
 						Address
@@ -42,6 +46,7 @@
 					<label for = "address2" name = "address2">Address 2</label>
 					<label for = "optional" id = "optional" id = "optional">(Optional)</label><br>
 					<input type = "text" name = "address2" id = "address2" placeholder = "Apartment or suite" onfocusout = "validate(this)"><br>
+
 				</div>
 				<!--  Country -->
 				<div class = "div_03">
@@ -70,7 +75,7 @@
 					<p id = "states" style = "display:none;">Please provide a valid state.<br></p>
 					<!--  Zip -->
 					
-					<input type = "number" name = "zip" id = "zip" onfocusout = "validate(this)">
+					<input type = "text" name = "zip" id = "zip" onfocusout = "validate(this)">
 					<p id = "zip" style = "display:none;">Zip code required. <br></p>
 				</div>
 				<hr>
@@ -91,11 +96,11 @@
 				<input type = "radio" name = "paymentmode" id = "paymentmode" onfocusout = "validate(this)"> Paypal card<hr> <br>
 
 				<!--  Name of the card -->
-				<div class = div_04>
+				<div class = "div_04">
 					<label for = "cname" name = "cname" id = "cname">Name on card</label>
 					<label for = "ccnumber" name = "ccnumber" id = "ccnumber" >Credit card number</label><br>
 					<input type = "text" id = "cname" name = "cname" onfocusout = "validate(this)">
-					<input type = "number" id = "ccnumber" name = "ccnumber" onfocusout = "validate(this)"><br>
+					<input type = "text" id = "ccnumber" name = "ccnumber" onfocusout = "validate(this)"><br>
 					
 					<label for = "optional" name = "optional" id = "optional">Full name as displayed on card</label>
 					<br>
@@ -105,17 +110,24 @@
 					<p id = "ccnumber" style = "display:none;">Credit Card number is required<br></p>
 				</div>
 				<!-- Expiry Date -->
-				<br><br>
-				<label for = "expirydate" name = "expirydate">Expiration</label><br>
-				<input type = "date" id = "expirydate" name = "expirydate" onfocusout = "validate(this)"><br>
-				<p id = "expirydate" style = "display:none;">Expiration date required.<br></p>
 
-				<!-- CVV -->
+				<br><br>
 				
-				<label for = "cvv" name = "cvv">CVV</label><br>
-				<input type = "number" maxlength = "3" id = "cvv" name = "cvv" onfocusout = "validate(this)"><br>
-				<p id = "cvv" style = "display:none;"> Security Code required.<br></p>
-				
+				<div class = "div_05">
+					<label for = "expirydate" name = "expirydate" id = "expirydate" >Expiration</label>
+
+					<label for = "cvv" name = "cvv" id = "cvv">CVV</label><br>
+
+					<input type = "month" id = "expirydate" name = "expirydate" onfocusout = "validate(this)">
+
+					<input type = "text" maxlength = "3" id = "cvv" name = "cvv" onfocusout = "validate(this)">
+
+					<p id = "expirydate" style = "display:none;">Expiration date required.</p>
+
+					
+					<p id = "cvv" style = "display:none;"> Security Code required.</p>
+				</div><br>
+
 				<input type = "submit" value = "Continue to checkout" name = "submit">
 				
 			</form>
