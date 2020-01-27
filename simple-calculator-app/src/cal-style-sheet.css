@@ -1,0 +1,17 @@
+.container{
+    width : 20%; 
+    margin:auto;
+}
+.input-button{
+    display :flex;
+    flex-direction :row;
+    box-sizing:border-box;
+}
+.input-button > button{
+    width : 25%;
+    text-align :center;
+    border : 1px solid white;
+}
+.input-button > input[type=text]{
+    width : 100%;
+}

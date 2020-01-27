@@ -1,67 +1,28 @@
 import React ,{Component} from 'react';
-import ReactDOM from 'react-dom';
-
+import 'bootstrap/dist/css/bootstrap.css';
+import './cal-style-sheet.css';
+import ButtonType from './ButtonType';
+import InputBox from './InputBox.jsx';
 class Button extends Component{
-    constructor(props){
-        super(props);
-    }
-   
     render(){
-    const divStyles = {
-        width :"15%"
-    };
-    return(
-        
-        <div style = {divStyles}  className = "container-lg bg-dark" id = "container-small-width"  >
-        <div className = "form-group row">
-            <div className = "col-xs-1">
-                <input className = "form-control input-lg" type = "text" name = "inputvalue" id = "inputvalue"/>
-            </div>
-        </div>
-        
-        <div className = "btn-group">
-            <button className = "btn btn-dark btn-lg text-white text-center" type = "button" onClick = { () =>this.props.clearBox('inputvalue')} >AC</button>
-        </div>
-        <div className = "btn-group">
-               
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","7")}> 7</button>
-                <button className = "btn btn-dark btn-lg  text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","8")}> 8</button>
-                <button className = "btn btn-dark btn-lg  text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","9")}> 9</button>
-                <button className = "btn btn-dark btn-lg text-white text-center" type = "button" onClick = {()=> this.props.putOperators("inputvalue","*")}> x </button>
-        </div> 
-        <br/>
-        <div className = "btn-group">
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","4")}> 4</button>
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","5")}> 5</button>
-                
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","6")}> 6</button>
-                <button className = "btn btn-dark btn-lg text-white text-center" type = "button" onClick = {()=> this.props.putOperators("inputvalue","+")}> + </button>
-        </div>
-        <br/>
-        <div className = "btn-group">   
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","1")}> 1</button> 
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","2")}> 2</button>
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","3")}> 3</button><br/>
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putOperators("inputvalue","-")}> - </button> 
-        </div>
-        <br/>
-        <div className = "btn-group">
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putOperators("inputvalue","/")}> /</button>
+        let numbersAndOperators = ["0","1","2","3","4","5","6","7","8","9","+","-","/","**","%",".","=","AC"];
 
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putOperators("inputvalue","(")}> (</button>
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putNumber("inputvalue","0")}> 0</button>
-                <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putOperators("inputvalue",")")}> )</button>
-        </div>   
-        <br/>
-        <div className = "btn-group">
-          
-            <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putOperators("inputvalue","%")}>%</button>
-            <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putOperators("inputvalue","**")}>x<sup>y</sup></button>
-            <button className = "btn btn-dark btn-lg text-white text-center"type = "button" onClick = {()=> this.props.putOperators("inputvalue",".")}>.</button>
-            <button  className = "btn btn-warning btn-lg text-white text-center"type = "button" onClick = {()=> this.props.calculateValues("inputvalue")}>=</button>
-        </div>     
-    </div>
-    );
+        return(
+            <div className = "container">
+                <div className = "form-group-sm input-button">
+                    <InputBox/>
+                </div>
+                <div className = "btn btn-dark text-white">
+                    {
+                        numbersAndOperators.map( (value,index) =>  
+                            <ButtonType key = {index} operatorType = {value} putNumbersAndOperators = {this.props.putNumbersAndOperators}  clearBox  = {this.props.clearBox}  calculateValues = {this.props.calculateValues } /> 
+                            
+                        )
+                    }
+                </div>   
+            </div>
+        );
     }
 }
+
 export default Button;
